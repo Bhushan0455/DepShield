@@ -105,7 +105,7 @@ Review compatibility before moving to v3.x
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/DepShield.git
+git clone https://github.com/Bhushan0455/DepShield.git
 cd DepShield
 npm install
 pip install -r requirements.txt
