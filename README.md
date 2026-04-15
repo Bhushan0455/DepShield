@@ -22,8 +22,8 @@ Follow these steps to set up and run DepShield on your local machine.
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/dep-shield.git
-   cd dep-shield
+   git clone https://github.com/yourusername/DepShield.git
+   cd DepShield
    ```
 
 2. **Install Frontend Dependencies**:
