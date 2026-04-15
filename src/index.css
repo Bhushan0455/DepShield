@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-ghost font-body overflow-x-hidden antialiased;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+  }
+
+  .text-drama {
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .font-mono {
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+@layer components {
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #18181B;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7B61FF;
+  }
+
+  /* Vapor Clinic Magnetic Button Base */
+  .btn-vapor {
+    @apply relative inline-flex items-center justify-center gap-2 border-none rounded-full font-body text-sm font-semibold tracking-wide overflow-hidden whitespace-nowrap px-6 py-3 text-ghost bg-surface/50 border border-white/5 backdrop-blur-md;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .btn-vapor:hover {
+    transform: scale(1.03) translateY(-1px);
+    box-shadow: 0 0 20px rgba(123, 97, 255, 0.3);
+  }
+
+  .btn-vapor::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #7B61FF;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+  }
+
+  .btn-vapor:hover::before {
+    transform: translateY(0);
+  }
+
+  .btn-vapor-primary {
+    @apply relative inline-flex items-center justify-center gap-2 border-none rounded-full font-body text-sm font-semibold tracking-wide overflow-hidden whitespace-nowrap px-6 py-3 text-white bg-primary;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 0 15px rgba(123, 97, 255, 0.4);
+  }
+
+  .btn-vapor-primary:hover {
+    transform: scale(1.03) translateY(-1px);
+    box-shadow: 0 0 30px rgba(123, 97, 255, 0.6);
+  }
+
+  .btn-vapor-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: white;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+  }
+
+  .btn-vapor-primary:hover {
+    color: #0A0A14;
+  }
+
+  .btn-vapor-primary:hover::before {
+    transform: translateY(0);
+  }
+
+  .glass-panel {
+    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+}
+
+/* Custom Cursor */
+* {
+  cursor: none !important;
+}
+
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #7B61FF;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+  mix-blend-mode: screen;
+}
+
+#custom-cursor.hover {
+  width: 32px;
+  height: 32px;
+  background-color: rgba(123, 97, 255, 0.3);
+  border: 1px solid #7B61FF;
+}
+
+/* Base keyframes used across the app */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-vapor {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #7B61FF;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+
+
+/* Custom Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Text Selection */
+::selection {
+  background: rgba(37, 99, 235, 0.2);
+  color: #0F172A;
+}
+
+.dark ::selection {
+  background: rgba(123, 97, 255, 0.3);
+  color: #F0EFF4;
+}
