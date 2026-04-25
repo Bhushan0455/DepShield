@@ -1,0 +1,53 @@
+                    ┌────────────────────────┐
+                    │      DepShield UI             │
+                    │ React + Vite + Tailwind       │
+                    └───────────.┬────────────┘
+                                    │
+                 ┌──────────────┴──────────────┐
+                 │                             │
+        Public repo scan                GitHub login mode
+                 │                             │
+                 v                             v
+        Paste repo link              Continue with GitHub
+                 │                             │
+                 v                             v
+        Backend scans once          Install DepShield GitHub App
+                 │                             │
+                 v                             v
+           Show results              User selects repositories
+                                               │
+                                               v
+                                  Store installation + repo data
+                                               │
+                                               v
+                              GitHub sends push webhook on commits
+                                               │
+                                               v
+                              Check changed files in the commit
+                                               │
+                         ┌─────────────────────┴─────────────────────┐
+                         │                                           │
+       package.json / lock file changed?                      No dependency change
+                         │                                           │
+                         v                                           v
+              Fetch dependency files                         Ignore webhook
+                         │
+                         v
+              Run DepShield scanner
+                         │
+                         v
+        OSV CVE check + npm metadata check
+                         │
+                         v
+            Save scan result in database
+                         │
+                         v
+          New critical/high risk found?
+                         │
+                 ┌───────┴────────┐
+                 │                │
+                Yes               No
+                 │                │
+                 v                v
+        Send dashboard/email     Save scan only
+              alert
