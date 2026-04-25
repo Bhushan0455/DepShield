@@ -1,74 +1,124 @@
-# DepShield: AI Dependency Risk Analyzer
+# 🛡️ DepShield: Dependency Risk Analyzer
 
-DepShield is a personal AI-powered tool designed to analyze project dependencies for security risks and vulnerabilities. It provides a clean dashboard to visualize and manage your software supply chain security.
-
-## Features
-
-- **AI-Driven Risk Analysis**: Automatically identifies potential risks in your dependencies.
-- **Dependency Visualization**: See exactly what's in your project at a glance.
-- **Fast and Lightweight**: Built with React and Vite for a seamless developer experience.
-
-## Getting Started
-
-Follow these steps to set up and run DepShield on your local machine.
-
-### Prerequisites
-
-- **Node.js**: v18 or higher ([Download](https://nodejs.org/))
-- **Python**: v3.8 or higher ([Download](https://www.python.org/))
-- **Git**: Installed and available in your PATH
-
-### Installation
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/dep-shield.git
-   cd dep-shield
-   ```
-
-2. **Install Frontend Dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Install Backend Dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### Running the Application
-
-DepShield requires both the React frontend and the Flask backend to be running.
-
-#### 1. Start Both Simultaneously (Recommended)
-Run the following command in the root directory:
-```bash
-npm start
-```
-This uses `concurrently` to launch the Vite development server and the Python Flask API at the same time.
-
-#### 2. Manual Startup (Separate Terminals)
-If you prefer to run them separately:
-
-- **Frontend**:
-  ```bash
-  npm run dev
-  ```
-  App available at `http://localhost:5173`.
-
-- **Backend**:
-  ```bash
-  npm run backend
-  ```
-  API available at `http://localhost:5000`.
-
-### Building for Production
-
-To create a production-ready bundle of the frontend:
-```bash
-npm run build
-```
+DepShield is a system-level tool designed to analyze and evaluate risks in modern software dependencies. It helps developers understand not just *what is vulnerable*, but *why it matters* and *what to do about it*.
 
 ---
 
+## 🚨 Problem
 
+Modern applications depend heavily on open-source packages, but existing tools often fall short:
+
+- They generate **noisy alerts** without context  
+- They don’t account for **transitive dependencies**  
+- They ignore **maintainer trust and activity**  
+- They don’t help developers **prioritize real risk**
+
+👉 As a result, developers struggle to make informed decisions about dependency safety.
+
+---
+
+## 💡 Solution
+
+DepShield approaches dependency analysis as a **system-level problem**, where risk is determined by multiple interacting factors rather than a single vulnerability.
+
+It follows a simple reasoning flow:
+
+> **Observe → Analyze → Evaluate → Recommend**
+
+---
+
+## ⚙️ How It Works
+
+DepShield evaluates dependencies using multiple signals:
+
+### 🔍 Signals Considered
+
+- **🛑 Vulnerability Data (OSV)**  
+  Detects known security issues (CVEs)
+
+- **📦 Version Analysis**  
+  Flags outdated packages and risky upgrade paths
+
+- **🌐 Dependency Depth**  
+  Considers whether a dependency is direct or deeply nested
+
+- **👤 Maintainer Activity**  
+  Identifies packages with low activity or potential risk
+
+---
+
+### 🧠 Risk Evaluation
+
+These signals are combined to generate a **context-aware risk assessment**, helping developers:
+
+- Focus on high-impact issues  
+- Reduce unnecessary alerts  
+- Understand dependency health more clearly  
+
+---
+
+## 📊 Example Output
+Dependency: example-lib@1.2.0
+Risk: HIGH
+
+Reasons:
+
+Known vulnerability detected
+Maintainer inactive
+Major version gap
+
+Recommendation:
+
+Upgrade to v2.x (stable)
+Review compatibility before moving to v3.x
+
+
+---
+
+## ✨ Features
+
+- Context-aware dependency risk analysis  
+- Support for direct and transitive dependencies  
+- Actionable recommendations (not just alerts)  
+- Lightweight and fast frontend dashboard  
+
+---
+
+## 🏗️ Tech Stack
+
+- **Frontend**: React + Vite + Tailwind CSS  
+- **Backend**: Python (Flask)  
+- **Data Sources**: OSV, package metadata  
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+)  
+- Python (v3.8+)  
+- Git  
+
+---
+
+### Installation
+
+```bash
+git clone https://github.com/Bhushan0455/DepShield.git
+cd DepShield
+npm install
+pip install -r requirements.txt
+
+Run the Application
+🔹 Run Both (Recommended)
+npm start
+🔹 Run Separately
+
+Frontend:
+
+npm run dev
+
+Backend:
+
+npm run backend
